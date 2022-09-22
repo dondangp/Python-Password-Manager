@@ -26,21 +26,28 @@ def view():
             print("User:", user, "| Password:",
                   fer.decrypt(passw.encode()).decode())
 
-
+def recursion():
+    
 def add():
     name = input('Account Name: ')
     pwd = input("Password: ")
-
     with open('passwords.txt', 'a') as f:
         f.write(name + "|" + fer.encrypt(pwd.encode()).decode() + "\n")
-
+def masterPW():
+    mpw = input("What is your master password?: ")
+    print(mpw)
+    enterMpwAgain = input("Please re-enter your master password: ")
+    if(enterMpwAgain == mpw):
+        print("Access Granted")
+    else:
+        print("Invalid access.")
 
 while True:
+    masterPW()
     mode = input(
         "Would you like to add a new password or view existing ones (view, add), press q to quit? ").lower()
     if mode == "q":
         break
-
     if mode == "view":
         view()
     elif mode == "add":
