@@ -1,11 +1,16 @@
 from cryptography.fernet import Fernet
-
+from random import seed
+from random import random
 '''
 def write_key():
     key = Fernet.generate_key()
     with open("key.key", "wb") as key_file:
         key_file.write(key)'''
-
+def password_gen():
+    seed(1)
+    print(random(),random(),random())
+    seed(1)
+    print(random(),random(),random())
 
 def load_key():
     file = open("key.key", "rb")
@@ -24,10 +29,7 @@ def view():
             data = line.rstrip()
             user, passw = data.split("|")
             print("User:", user, "| Password:",
-                  fer.decrypt(passw.encode()).decode())
-
-def recursion():
-    
+                  fer.decrypt(passw.encode()).decode())    
 def add():
     name = input('Account Name: ')
     pwd = input("Password: ")
@@ -55,3 +57,11 @@ while True:
     else:
         print("Invalid mode.")
         continue
+    random = input("Would you want to generate a random password?: ")
+    if(random == "yes"):
+        password_gen()
+    if(random == "no"):
+        print("Exiting...")
+        exit
+    
+
